@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B0F4BDF29CBDE7900415819 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0F4BDE29CBDE7800415819 /* ProfileView.swift */; };
+		3B0F4BE129CBDED800415819 /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0F4BE029CBDED800415819 /* ContactView.swift */; };
 		8B93156429C27449006F4E0A /* SearchTutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B93156329C27449006F4E0A /* SearchTutor.swift */; };
 		8B93156629C2B56A006F4E0A /* TutorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B93156529C2B56A006F4E0A /* TutorItem.swift */; };
 		8B93156929C2B800006F4E0A /* TutorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B93156829C2B800006F4E0A /* TutorModel.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B0F4BDE29CBDE7800415819 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		3B0F4BE029CBDED800415819 /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
 		8B93156329C27449006F4E0A /* SearchTutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTutor.swift; sourceTree = "<group>"; };
 		8B93156529C2B56A006F4E0A /* TutorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorItem.swift; sourceTree = "<group>"; };
 		8B93156829C2B800006F4E0A /* TutorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorModel.swift; sourceTree = "<group>"; };
@@ -75,6 +79,8 @@
 			children = (
 				8B93156729C2B7F1006F4E0A /* Model */,
 				8BE4121229C262E000086372 /* LoginScreen.swift */,
+				3B0F4BDE29CBDE7800415819 /* ProfileView.swift */,
+				3B0F4BE029CBDED800415819 /* ContactView.swift */,
 				8BE4121429C26ADA00086372 /* ForgotPassword.swift */,
 				8B93156529C2B56A006F4E0A /* TutorItem.swift */,
 				8B93156329C27449006F4E0A /* SearchTutor.swift */,
@@ -167,7 +173,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BE4121729C26D8400086372 /* RegisterScreen.swift in Sources */,
+				3B0F4BE129CBDED800415819 /* ContactView.swift in Sources */,
 				8BE4120729C25D9B00086372 /* ContentView.swift in Sources */,
+				3B0F4BDF29CBDE7900415819 /* ProfileView.swift in Sources */,
 				8B93156929C2B800006F4E0A /* TutorModel.swift in Sources */,
 				8B93156429C27449006F4E0A /* SearchTutor.swift in Sources */,
 				8BE4120529C25D9B00086372 /* TutorHiveApp.swift in Sources */,
