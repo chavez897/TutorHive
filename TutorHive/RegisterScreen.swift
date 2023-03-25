@@ -2,8 +2,9 @@
 //  RegisterScreen.swift
 //  TutorHive
 //
-//  Created by Rodrigo Chavez on 2023-03-15.
+//  Created by Darshit Patel on 2023-03-22.
 //
+
 
 import SwiftUI
 

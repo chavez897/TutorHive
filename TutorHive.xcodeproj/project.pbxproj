@@ -47,7 +47,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8BE411FE29C25D9B00086372 /* Frameworks */ = {
+		652AB97F29CBEE1700F3BEE3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -66,31 +66,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8B93156729C2B7F1006F4E0A /* Model */ = {
+		652AB97929CBEE1700F3BEE3 = {
 			isa = PBXGroup;
 			children = (
-				8B93156829C2B800006F4E0A /* TutorModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		8BE411F829C25D9B00086372 = {
-			isa = PBXGroup;
-			children = (
-				8BE4120329C25D9B00086372 /* TutorHive */,
-				8BE4120229C25D9B00086372 /* Products */,
+				652AB98429CBEE1700F3BEE3 /* TutorHive */,
+				652AB98329CBEE1700F3BEE3 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		8BE4120229C25D9B00086372 /* Products */ = {
+		652AB98329CBEE1700F3BEE3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8BE4120129C25D9B00086372 /* TutorHive.app */,
+				652AB98229CBEE1700F3BEE3 /* TutorHive.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8BE4120329C25D9B00086372 /* TutorHive */ = {
+		652AB98429CBEE1700F3BEE3 /* TutorHive */ = {
+			isa = PBXGroup;
+			children = (
+				652AB99329CBEE2D00F3BEE3 /* Models */,
+				652AB98529CBEE1700F3BEE3 /* TutorHiveApp.swift */,
+				652AB98729CBEE1700F3BEE3 /* ContentView.swift */,
+				652AB98929CBEE1900F3BEE3 /* Assets.xcassets */,
+				652AB98B29CBEE1900F3BEE3 /* Preview Content */,
+				652AB99429CBEFBE00F3BEE3 /* LoginScreen.swift */,
+				652AB99629CBF05400F3BEE3 /* ProfileView.swift */,
+				652AB99829CBF09600F3BEE3 /* ContactView.swift */,
+				652AB99A29CBF0D200F3BEE3 /* ForgotPassword.swift */,
+				652AB99C29CBF10700F3BEE3 /* TutorItem.swift */,
+				652AB99E29CBF15300F3BEE3 /* SearchTutor.swift */,
+				652AB9A229CBF1DF00F3BEE3 /* RegisterScreen.swift */,
+				652AB9A429CBF21700F3BEE3 /* TabView.swift */,
+				652AB9A629CC04D100F3BEE3 /* RegisterTutor.swift */,
+				652AB9A829CCAF3400F3BEE3 /* Statistics.swift */,
+				8B6318A729CE7D1B004CB348 /* TutorDetail.swift */,
+			);
+			path = TutorHive;
+			sourceTree = "<group>";
+		};
+		652AB98B29CBEE1900F3BEE3 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
 				8B93156729C2B7F1006F4E0A /* Model */,
@@ -106,27 +121,27 @@
 				8BE4121629C26D8400086372 /* RegisterScreen.swift */,
 				8B93156A29C2C051006F4E0A /* TabView.swift */,
 			);
-			path = TutorHive;
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		8BE4120A29C25D9C00086372 /* Preview Content */ = {
+		652AB99329CBEE2D00F3BEE3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8BE4120B29C25D9C00086372 /* Preview Assets.xcassets */,
+				652AB9A029CBF18A00F3BEE3 /* TutorModel.swift */,
 			);
-			path = "Preview Content";
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8BE4120029C25D9B00086372 /* TutorHive */ = {
+		652AB98129CBEE1700F3BEE3 /* TutorHive */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8BE4120F29C25D9C00086372 /* Build configuration list for PBXNativeTarget "TutorHive" */;
+			buildConfigurationList = 652AB99029CBEE1900F3BEE3 /* Build configuration list for PBXNativeTarget "TutorHive" */;
 			buildPhases = (
-				8BE411FD29C25D9B00086372 /* Sources */,
-				8BE411FE29C25D9B00086372 /* Frameworks */,
-				8BE411FF29C25D9B00086372 /* Resources */,
+				652AB97E29CBEE1700F3BEE3 /* Sources */,
+				652AB97F29CBEE1700F3BEE3 /* Frameworks */,
+				652AB98029CBEE1700F3BEE3 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -145,25 +160,25 @@
 				8B8A039229C7CE6400083082 /* FirebaseFirestoreSwift */,
 			);
 			productName = TutorHive;
-			productReference = 8BE4120129C25D9B00086372 /* TutorHive.app */;
+			productReference = 652AB98229CBEE1700F3BEE3 /* TutorHive.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		8BE411F929C25D9B00086372 /* Project object */ = {
+		652AB97A29CBEE1700F3BEE3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
 				TargetAttributes = {
-					8BE4120029C25D9B00086372 = {
-						CreatedOnToolsVersion = 14.2;
+					652AB98129CBEE1700F3BEE3 = {
+						CreatedOnToolsVersion = 14.0.1;
 					};
 				};
 			};
-			buildConfigurationList = 8BE411FC29C25D9B00086372 /* Build configuration list for PBXProject "TutorHive" */;
+			buildConfigurationList = 652AB97D29CBEE1700F3BEE3 /* Build configuration list for PBXProject "TutorHive" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -179,13 +194,13 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8BE4120029C25D9B00086372 /* TutorHive */,
+				652AB98129CBEE1700F3BEE3 /* TutorHive */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		8BE411FF29C25D9B00086372 /* Resources */ = {
+		652AB98029CBEE1700F3BEE3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -198,26 +213,31 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		8BE411FD29C25D9B00086372 /* Sources */ = {
+		652AB97E29CBEE1700F3BEE3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BE4121729C26D8400086372 /* RegisterScreen.swift in Sources */,
-				8BE4120729C25D9B00086372 /* ContentView.swift in Sources */,
-				8B93156929C2B800006F4E0A /* TutorModel.swift in Sources */,
-				8B93156429C27449006F4E0A /* SearchTutor.swift in Sources */,
-				8BE4120529C25D9B00086372 /* TutorHiveApp.swift in Sources */,
-				8BE4121329C262E000086372 /* LoginScreen.swift in Sources */,
-				8B93156629C2B56A006F4E0A /* TutorItem.swift in Sources */,
-				8B93156B29C2C051006F4E0A /* TabView.swift in Sources */,
-				8BE4121529C26ADA00086372 /* ForgotPassword.swift in Sources */,
+				652AB9A529CBF21700F3BEE3 /* TabView.swift in Sources */,
+				652AB9A729CC04D100F3BEE3 /* RegisterTutor.swift in Sources */,
+				652AB9A329CBF1DF00F3BEE3 /* RegisterScreen.swift in Sources */,
+				652AB9A129CBF18A00F3BEE3 /* TutorModel.swift in Sources */,
+				652AB99F29CBF15300F3BEE3 /* SearchTutor.swift in Sources */,
+				652AB9A929CCAF3400F3BEE3 /* Statistics.swift in Sources */,
+				652AB99729CBF05400F3BEE3 /* ProfileView.swift in Sources */,
+				8B6318A829CE7D1B004CB348 /* TutorDetail.swift in Sources */,
+				652AB98829CBEE1700F3BEE3 /* ContentView.swift in Sources */,
+				652AB98629CBEE1700F3BEE3 /* TutorHiveApp.swift in Sources */,
+				652AB99929CBF09600F3BEE3 /* ContactView.swift in Sources */,
+				652AB99529CBEFBE00F3BEE3 /* LoginScreen.swift in Sources */,
+				652AB99D29CBF10700F3BEE3 /* TutorItem.swift in Sources */,
+				652AB99B29CBF0D200F3BEE3 /* ForgotPassword.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		8BE4120D29C25D9C00086372 /* Debug */ = {
+		652AB98E29CBEE1900F3BEE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -267,7 +287,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -277,7 +297,7 @@
 			};
 			name = Debug;
 		};
-		8BE4120E29C25D9C00086372 /* Release */ = {
+		652AB98F29CBEE1900F3BEE3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -321,7 +341,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -331,7 +351,7 @@
 			};
 			name = Release;
 		};
-		8BE4121029C25D9C00086372 /* Debug */ = {
+		652AB99129CBEE1900F3BEE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -339,7 +359,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TutorHive/Preview Content\"";
-				DEVELOPMENT_TEAM = 94WA4VCJGX;
+				DEVELOPMENT_TEAM = VDQS4882Z8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -352,7 +372,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rodrigo.TutorHive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.TutorHive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -360,7 +380,7 @@
 			};
 			name = Debug;
 		};
-		8BE4121129C25D9C00086372 /* Release */ = {
+		652AB99229CBEE1900F3BEE3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -368,7 +388,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TutorHive/Preview Content\"";
-				DEVELOPMENT_TEAM = 94WA4VCJGX;
+				DEVELOPMENT_TEAM = VDQS4882Z8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -381,7 +401,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rodrigo.TutorHive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.TutorHive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -392,20 +412,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8BE411FC29C25D9B00086372 /* Build configuration list for PBXProject "TutorHive" */ = {
+		652AB97D29CBEE1700F3BEE3 /* Build configuration list for PBXProject "TutorHive" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8BE4120D29C25D9C00086372 /* Debug */,
-				8BE4120E29C25D9C00086372 /* Release */,
+				652AB98E29CBEE1900F3BEE3 /* Debug */,
+				652AB98F29CBEE1900F3BEE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8BE4120F29C25D9C00086372 /* Build configuration list for PBXNativeTarget "TutorHive" */ = {
+		652AB99029CBEE1900F3BEE3 /* Build configuration list for PBXNativeTarget "TutorHive" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8BE4121029C25D9C00086372 /* Debug */,
-				8BE4121129C25D9C00086372 /* Release */,
+				652AB99129CBEE1900F3BEE3 /* Debug */,
+				652AB99229CBEE1900F3BEE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -471,5 +491,5 @@
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 8BE411F929C25D9B00086372 /* Project object */;
+	rootObject = 652AB97A29CBEE1700F3BEE3 /* Project object */;
 }
