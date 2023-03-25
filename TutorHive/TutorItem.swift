@@ -2,27 +2,29 @@
 //  TutorItem.swift
 //  TutorHive
 //
-//  Created by Darshit Patel on 2023-03-22.
+//  Created by Rodrigo Chavez on 2023-03-15.
 //
 
 import SwiftUI
 
 struct TutorItem: View {
+    var tutor: Tutor
+    
     var body: some View {
             HStack {
                 HStack {
                     VStack(alignment: .leading) {
-                        Text("Rodrigo Chavez Mercado")
+                        Text("\(tutor.name)  \(tutor.lastName)")
                             .font(.system(size: 20))
                             .bold()
-                        Text("ReactJS, NodeJS, Springboot")
+                        Text(tutor.skills.joined(separator: ", "))
                             .font(.callout)
-                        Text("Spanish, English")
+                        Text(tutor.language.joined(separator: ", "))
                             .font(.callout)
                     }
                     Spacer()
                     VStack {
-                        Text("CAD $25/hr")
+                        Text((String(format: "CAD $%.2f/hr ", tutor.price)))
                     }
                 }
                 .padding()
@@ -30,11 +32,12 @@ struct TutorItem: View {
                 .cornerRadius(10)
                 .shadow(color: .gray, radius: 3, x: 2, y: 2)
             }
-        }
+    }
 }
 
 struct TutorItem_Previews: PreviewProvider {
     static var previews: some View {
-        TutorItem()
+        TutorItem(tutor: Tutor(id: "", name: "Rodrigo", lastName: "Chavez Mercado", skills: ["ReactJS"], language: ["Spanish"], description: "", price: 25.0))
     }
 }
+
