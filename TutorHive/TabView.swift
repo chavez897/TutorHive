@@ -9,21 +9,13 @@ import SwiftUI
 
 struct Tabs: View {
     @AppStorage("CurrentTab") var selectedTab = 1
-    var sharedItems = [
-            Tutor(id: 1, name: "Rodrigo", skills: "React", language: "Spanish", description: "", price: ""),
-            Tutor(id: 1, name: "Rodrigo", skills: "React", language: "Spanish", description: "", price: ""),
-            Tutor(id: 1, name: "Rodrigo", skills: "React", language: "Spanish", description: "", price: ""),
-            Tutor(id: 1, name: "Rodrigo", skills: "React", language: "Spanish", description: "", price: ""),
-            Tutor(id: 1, name: "Rodrigo", skills: "React", language: "Spanish", description: "", price: ""),
-            
-        ]
     var body: some View {
         TabView(selection: $selectedTab) {
-            SearchTutor(items: sharedItems).tabItem{
+            SearchTutor().tabItem{
                 Image(systemName: "magnifyingglass")
                 Text("Search")
             }
-            SearchTutor(items: sharedItems).tabItem{
+            SearchTutor().tabItem{
                 Image(systemName: "person.crop.circle")
                 Text("Profile")
             }

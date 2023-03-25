@@ -8,10 +8,13 @@
 import Foundation
 
 struct Tutor: Identifiable {
-    var id: Int
+    var id: String
     var name: String
-    var skills: String
-    var language: String
+    var lastName: String
+    var skills: [String]
+    var language: [String]
     var description: String
-    var price: String
+    var price: Float
 }
+
+
