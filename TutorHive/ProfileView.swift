@@ -22,7 +22,15 @@ let gender = ["male", "female"]
                 .fontWeight(.bold)
                 .frame(maxWidth: .infinity, alignment: .top)
                 .padding(50)
-
+            
+            Image(systemName: "person")
+              .resizable()
+              .frame(width: 60, height: 60)
+              .foregroundColor(.white)
+              .padding(20)
+              .background(Color.black)
+              .clipShape(Circle())
+            
             TextField("First Name", text: $firstName)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
 
