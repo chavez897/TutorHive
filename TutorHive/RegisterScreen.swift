@@ -10,7 +10,13 @@ import SwiftUI
 
 struct RegisterScreen: View {
     @State var name: String = ""
+    @State var emailAddress: String = ""
+    @State var password: String = ""
     @State var terms: Bool = false
+    @EnvironmentObject var authModel: AuthenticationModel
+    @State private var showLogin = false
+    @State private var signUpError: String?
+    
     var body: some View {
         VStack {
             HStack {
@@ -42,7 +48,7 @@ struct RegisterScreen: View {
                         .padding(.leading, 50)
                     Spacer()
                 }.padding(.top, 20)
-                TextField("Email", text: $name)
+                TextField("Email", text: $emailAddress)
                     .frame(width: 260)
                     .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
                     .background(Color(red: 227/255, green: 229/255, blue: 232/255))
@@ -52,7 +58,7 @@ struct RegisterScreen: View {
                         .padding(.leading, 50)
                     Spacer()
                 }.padding(.top, 20)
-                TextField("Password", text: $name)
+                SecureField("Password", text: $password)
                     .frame(width: 260)
                     .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
                     .background(Color(red: 227/255, green: 229/255, blue: 232/255))
@@ -61,8 +67,9 @@ struct RegisterScreen: View {
                     Text("I agree with terms and conditions")
                         .font(.system(size: 12))
                 }.padding(.horizontal, 50).padding(.top, 20)
+                
                 Button("Sign Up") {
-                    print("Button pressed!")
+                    authModel.signUp(name: name, emailAddress: emailAddress, password: password)
                 }
                 .foregroundColor(.white)
                 .frame(width: 280, height: 40)
@@ -72,20 +79,27 @@ struct RegisterScreen: View {
                 
             }
             Spacer()
+            NavigationLink(
+                               destination: SearchTutor(),
+                               isActive: $authModel.signUpSuccessful, // Use the published property
+                               label: { EmptyView() }
+                           )
             Divider()
             VStack{
                 Text("Already have an account?")
-                Button(action: {
-                    print("Button Clicked")
-                }) {
-                    Text("LOG IN").padding()
-                }
-            }
+                NavigationLink(destination: LoginScreen(), isActive: $showLogin) {
+                                        Button(action: {
+                                            self.showLogin = true
+                                        }) {
+                                            Text("LOG IN").padding()
+                                        }
+                                    }            }
             
                 
         }
     }
 }
+
 
 struct RegisterScreen_Previews: PreviewProvider {
     static var previews: some View {

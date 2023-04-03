@@ -11,6 +11,7 @@ import SwiftUI
 struct ForgotPassword: View {
     @State var email: String = ""
     @State var password: String = ""
+    @EnvironmentObject var authModel: AuthenticationModel
     var body: some View {
         VStack {
             Image("wise1")
@@ -31,6 +32,7 @@ struct ForgotPassword: View {
                 .cornerRadius(10)
             Button("Send") {
                 print("Button pressed!")
+                authModel.resetPassword(emailAddress: email)
             }
             .foregroundColor(.white)
             .frame(width: 280, height: 40)

@@ -7,17 +7,21 @@
 
 import SwiftUI
 import FirebaseCore
+import Firebase
 
 @main
 struct TutorHiveApp: App {
     
     init() {
       FirebaseApp.configure()
+        Database.database().isPersistenceEnabled = true
     }
     
     var body: some Scene {
         WindowGroup {
-            SearchTutor()
+            ContentView()
+              .environmentObject(AuthenticationModel())
+              .environment(\.colorScheme, .light)
         }
     }
 }

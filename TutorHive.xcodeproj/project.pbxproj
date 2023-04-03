@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BE87CDC29D89F8D00B9A95F /* AuthenticationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE87CDB29D89F8D00B9A95F /* AuthenticationModel.swift */; };
 		652AB98629CBEE1700F3BEE3 /* TutorHiveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652AB98529CBEE1700F3BEE3 /* TutorHiveApp.swift */; };
 		652AB98829CBEE1700F3BEE3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652AB98729CBEE1700F3BEE3 /* ContentView.swift */; };
 		652AB98A29CBEE1900F3BEE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 652AB98929CBEE1900F3BEE3 /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3BE87CDB29D89F8D00B9A95F /* AuthenticationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationModel.swift; sourceTree = "<group>"; };
 		652AB98229CBEE1700F3BEE3 /* TutorHive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TutorHive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		652AB98529CBEE1700F3BEE3 /* TutorHiveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorHiveApp.swift; sourceTree = "<group>"; };
 		652AB98729CBEE1700F3BEE3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				652AB9A029CBF18A00F3BEE3 /* TutorModel.swift */,
+				3BE87CDB29D89F8D00B9A95F /* AuthenticationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				652AB9A129CBF18A00F3BEE3 /* TutorModel.swift in Sources */,
 				652AB99F29CBF15300F3BEE3 /* SearchTutor.swift in Sources */,
 				652AB9A929CCAF3400F3BEE3 /* Statistics.swift in Sources */,
+				3BE87CDC29D89F8D00B9A95F /* AuthenticationModel.swift in Sources */,
 				652AB99729CBF05400F3BEE3 /* ProfileView.swift in Sources */,
 				8B6318A829CE7D1B004CB348 /* TutorDetail.swift in Sources */,
 				652AB98829CBEE1700F3BEE3 /* ContentView.swift in Sources */,

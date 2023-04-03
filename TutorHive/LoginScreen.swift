@@ -10,6 +10,7 @@ import SwiftUI
 struct LoginScreen: View {
     @State var email: String = ""
     @State var password: String = ""
+    @EnvironmentObject var authModel: AuthenticationModel
     var body: some View {
         VStack {
             Image("wise1")
@@ -28,27 +29,32 @@ struct LoginScreen: View {
                 .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
                 .background(Color(red: 227/255, green: 229/255, blue: 232/255))
                 .cornerRadius(10)
-            TextField("Password", text: $password)
+            SecureField("Password", text: $password)
                 .frame(width: 260)
                 .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
                 .background(Color(red: 227/255, green: 229/255, blue: 232/255))
                 .cornerRadius(10)
-            HStack{
-                Text("Forgot your password?")
-                    .font(.system(size: 14))
-                    .padding(.leading, 50)
-                    .foregroundColor(.blue)
-                Spacer()
-            }.padding(.bottom, 30).padding(.top, 10)
+            NavigationLink(destination: ForgotPassword()) {
+                HStack{
+                    Text("Forgot your password?")
+                        .font(.system(size: 14))
+                        .padding(.leading, 50)
+                        .foregroundColor(.blue)
+                    Spacer()
+                }.padding(.bottom, 30).padding(.top, 10)}
             Button("Login") {
-                print("Button pressed!")
-            }
+                          authModel.signIn(emailAddress: email, password: password)
+                      }
             .foregroundColor(.white)
             .frame(width: 280, height: 40)
             .background(Color(red: 90/255, green: 100/255, blue: 234/255))
             .cornerRadius(10)
             Spacer()
-            
+            NavigationLink(
+                               destination: SearchTutor(),
+                               isActive: $authModel.isSignedIn, // Use the published property
+                               label: { EmptyView() }
+                           )
         }.padding(.top, 70)
     }
 }
