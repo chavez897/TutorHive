@@ -93,7 +93,8 @@ struct RegisterScreen: View {
                                         }) {
                                             Text("LOG IN").padding()
                                         }
-                                    }            }
+                                    }
+            }
             
                 
         }

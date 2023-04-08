@@ -6,11 +6,25 @@
 //
 
 import SwiftUI
-
+import Firebase
+import GoogleSignIn
+import FirebaseAuth
 struct LoginScreen: View {
     @State var email: String = ""
     @State var password: String = ""
     @EnvironmentObject var authModel: AuthenticationModel
+    @Environment(\.dismiss) var dismiss
+    private func signInWithGoogle() {
+      Task {
+        if await authModel.signInWithGoogle() == true {
+            NavigationLink(
+                               destination: SearchTutor(),
+                               isActive: $authModel.isSignedIn, // Use the published property
+                               label: { EmptyView() }
+                           )
+        }
+      }
+    }
     var body: some View {
         VStack {
             Image("wise1")
@@ -56,6 +70,16 @@ struct LoginScreen: View {
                                label: { EmptyView() }
                            )
         }.padding(.top, 70)
+        Button(action:signInWithGoogle){
+            Text("Sign in with Google")
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 8)
+                .background(alignment: .leading){
+                    Image("Google")
+                        .frame(width: 30, alignment: .center)
+                }
+        }
+        .buttonStyle(.bordered)
     }
 }
 
@@ -64,3 +88,5 @@ struct LoginScreen_Previews: PreviewProvider {
         LoginScreen()
     }
 }
+
+ 

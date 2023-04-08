@@ -1,4 +1,3 @@
-//
 //  ProfileView.swift
 //  TutorHive
 //
@@ -6,6 +5,7 @@
 //
 
 import SwiftUI
+import FirebaseStorage
 
 struct ProfileView: View {
     @State private var firstName = ""
@@ -14,7 +14,13 @@ struct ProfileView: View {
     @State private var email = ""
     @State private var phoneNumber = ""
     @State var selectedGender: String = ""
-let gender = ["male", "female"]
+    @State private var profileImage: UIImage?
+    @EnvironmentObject var authModel: AuthenticationModel
+    let gender = ["male", "female"]
+    @State private var isShowingImagePicker = false
+    
+    @State private var imageURL: String = ""
+    
     var body: some View {
         VStack(spacing: 20) {
             Text("PROFILE")
@@ -23,36 +29,53 @@ let gender = ["male", "female"]
                 .frame(maxWidth: .infinity, alignment: .top)
                 .padding(50)
             
-            Image(systemName: "person")
-              .resizable()
-              .frame(width: 60, height: 60)
-              .foregroundColor(.white)
-              .padding(20)
-              .background(Color.black)
-              .clipShape(Circle())
+            if let image = profileImage {
+                Image(uiImage: image)
+                    .resizable()
+                    .frame(width: 60, height: 60)
+                    .foregroundColor(.white)
+                    .padding(20)
+                    .background(Color.black)
+                    .mask(Circle())
+                    .onTapGesture {
+                        // Show image picker
+                        isShowingImagePicker = true
+                    }
+            } else {
+                Image(systemName: "person")
+                    .resizable()
+                    .frame(width: 60, height: 60)
+                    .foregroundColor(.white)
+                    .padding(20)
+                    .background(Color.black)
+                    .clipShape(Circle())
+                    .onTapGesture {
+                        isShowingImagePicker = true
+                    }
+            }
             
             TextField("First Name", text: $firstName)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-
+            
             TextField("Last Name", text: $lastName)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-
+            
             DatePicker("Date of Birth", selection: $dob, displayedComponents: [.date])
                 .datePickerStyle(CompactDatePickerStyle())
-
+            
             TextField("Email", text: $email)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-
+            
             TextField("Phone Number", text: $phoneNumber)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-
+            
             DropdownTextField(
-                               placeholder: "Gender",
-                               options: gender,
-                               selection: $selectedGender
-                           )
+                placeholder: "Gender",
+                options: gender,
+                selection: $selectedGender
+            )
             Spacer()
-
+            
             Button(action: saveProfile) {
                 Text("Save")
                     .font(.headline)
@@ -65,10 +88,89 @@ let gender = ["male", "female"]
             .frame(maxWidth: .infinity, alignment: .bottom)
         }
         .padding()
+        .sheet(isPresented: $isShowingImagePicker, onDismiss: nil) {
+            ImagePicker(profileView: self, selectedImage: $profileImage)
+        }
+    }
+    
+    func saveProfile() {
+        authModel.saveProfileData(firstName: firstName, lastName: lastName, dob: dob, email: email, phoneNumber: phoneNumber, selectedGender: selectedGender, profileImageUrl: imageURL){ error in
+            if let error = error {
+                print("Error saving profile data: \(error.localizedDescription)")
+            } else {
+                print("Profile data saved successfully")
+            }
+        }
+    }
+    func uploadImage(_ image: UIImage) {
+        print("upload image")
+        guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
+        let storageRef = Storage.storage().reference().child("profileImages/\(UUID().uuidString).jpg")
+        let uploadTask = storageRef.putData(imageData, metadata: nil) { metadata, error in
+            if let error = error {
+                print("Error uploading image: \(error.localizedDescription)")
+            } else {
+                print("Image uploaded successfully")
+                // Get download URL and save profile data
+                storageRef.downloadURL { url, error in
+                    if let error = error {
+                        print("Error getting download URL: \(error.localizedDescription)")
+                    } else if let url = url {
+                        print(url.absoluteString)
+                        imageURL = url.absoluteString
+                        // Save profile data to Firestore
+                        // ...
+                    }
+                }
+            }
+        }
+        // Observe the upload progress
+        uploadTask.observe(.progress) { snapshot in
+            let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount) / Double(snapshot.progress!.totalUnitCount)
+            print("Upload progress: \(percentComplete)%")
+        }
     }
 
-    func saveProfile() {
-        // Implement saving of profile data here
+}
+struct ImagePicker: UIViewControllerRepresentable {
+    var profileView: ProfileView
+    var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    @Binding var selectedImage: UIImage?
+
+    func makeUIViewController(context: Context) -> UIImagePickerController {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = sourceType
+        imagePicker.delegate = context.coordinator
+        return imagePicker
+    }
+
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self, profileView: profileView)
+    }
+}
+class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    var parent: ImagePicker
+    var profileView: ProfileView
+    init(_ parent: ImagePicker, profileView:ProfileView) {
+        self.parent = parent
+        self.profileView = profileView
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        if let selectedImage = info[.originalImage] as? UIImage {
+            parent.selectedImage = selectedImage
+            profileView.uploadImage(selectedImage)
+        }
+
+        parent.sourceType = .photoLibrary
+        picker.dismiss(animated: true)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        parent.sourceType = .photoLibrary
+        picker.dismiss(animated: true)
     }
 }
 struct DropdownTextField: View {
@@ -105,6 +207,7 @@ struct DropdownTextField: View {
         .frame(width: .infinity, height: 40)
     }
 }
+
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView()
