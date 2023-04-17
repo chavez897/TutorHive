@@ -26,6 +26,14 @@ struct Tabs: View {
                 Text("Proile")
             }
             
+            NavigationView {
+                Statistics()
+                      }
+                       .tabItem {
+                           Image(systemName: "chart.bar")
+                           Text("Statistics")
+                       }
+            
         }
     }
 }
