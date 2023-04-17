@@ -18,7 +18,7 @@ struct LoginScreen: View {
       Task {
         if await authModel.signInWithGoogle() == true {
             NavigationLink(
-                               destination: SearchTutor(),
+                               destination: Tabs(),
                                isActive: $authModel.isSignedIn, // Use the published property
                                label: { EmptyView() }
                            )
@@ -65,7 +65,7 @@ struct LoginScreen: View {
             .cornerRadius(10)
             Spacer()
             NavigationLink(
-                               destination: SearchTutor(),
+                               destination: Tabs(),
                                isActive: $authModel.isSignedIn, // Use the published property
                                label: { EmptyView() }
                            )

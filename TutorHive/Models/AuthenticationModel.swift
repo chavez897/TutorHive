@@ -10,6 +10,7 @@ import SwiftUI
 import FirebaseAuth
 import Firebase
 import GoogleSignIn
+import FirebaseFirestore
 
 final class AuthenticationModel: ObservableObject {
 @Published var error: String?
@@ -37,6 +38,7 @@ final class AuthenticationModel: ObservableObject {
     password: String
   ) {
       Auth.auth().createUser(withEmail: emailAddress, password: password){(result, err) in
+          print("resuuu", result!.user.uid);
           DispatchQueue.main.async {
               if let err = err {
                   self.error = err.localizedDescription
@@ -84,40 +86,66 @@ final class AuthenticationModel: ObservableObject {
                       }
     }
     
-     func saveProfileData(
-         firstName: String,
-         lastName: String,
-         dob: Date,
-         email: String,
-         phoneNumber: String,
-         selectedGender: String,
-         profileImageUrl: String,
-         completion: @escaping (Error?) -> Void
-     ) {
-         guard let user = Auth.auth().currentUser else {
-             completion(NSError(domain: "com.example.TutorHive", code: 0, userInfo: [NSLocalizedDescriptionKey: "No authenticated user found."]))
-             return
-         }
-         
-         let db = Firestore.firestore()
-         let userRef = db.collection("users").document(user.uid)
-         
-         userRef.updateData([
-             "firstName": firstName,
-             "lastName": lastName,
-             "dob": dob,
-             "email": email,
-             "phoneNumber": phoneNumber,
-             "gender": selectedGender,
-             "profileImageUrl": profileImageUrl
-         ]) { error in
-             if let error = error {
-                 completion(error)
-             } else {
-                 completion(nil)
-             }
-         }
-     }
+    func saveProfileData(
+        firstName: String,
+        lastName: String,
+        dob: Date,
+        email: String,
+        phoneNumber: String,
+        selectedGender: String,
+        profileImageUrl: String,
+        completion: @escaping (Error?) -> Void
+    ) {
+        guard let user = Auth.auth().currentUser else {
+            completion(NSError(domain: "com.example.TutorHive", code: 0, userInfo: [NSLocalizedDescriptionKey: "No authenticated user found."]))
+            return
+        }
+        
+        let db = Firestore.firestore()
+        let userRef = db.collection("users").document(user.uid)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd" // set the desired date format
+
+        let dobString = dateFormatter.string(from: dob) // convert the Date value to a String
+
+        userRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                userRef.updateData([
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "dob": dobString,
+                    "email": email,
+                    "phoneNumber": phoneNumber,
+                    "gender": selectedGender,
+                    "profileImageUrl": profileImageUrl
+                ]) { error in
+                    if let error = error {
+                        completion(error)
+                    } else {
+                        completion(nil)
+                    }
+                }
+            } else {
+                userRef.setData([
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "dob": dobString,
+                    "email": email,
+                    "phoneNumber": phoneNumber,
+                    "gender": selectedGender,
+                    "profileImageUrl": profileImageUrl,
+                    "uid": user.uid
+                ]) { error in
+                    if let error = error {
+                        completion(error)
+                    } else {
+                        completion(nil)
+                    }
+                }
+            }
+        }
+    }
+
     enum AuthenticationError: Error {
       case tokenError(message: String)
     }
@@ -155,4 +183,5 @@ final class AuthenticationModel: ObservableObject {
             print(error.localizedDescription)
             return false
         }}
+   
 }

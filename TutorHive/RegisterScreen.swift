@@ -80,7 +80,7 @@ struct RegisterScreen: View {
             }
             Spacer()
             NavigationLink(
-                               destination: SearchTutor(),
+                               destination: Tabs(),
                                isActive: $authModel.signUpSuccessful, // Use the published property
                                label: { EmptyView() }
                            )

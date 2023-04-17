@@ -6,8 +6,12 @@
 
 import SwiftUI
 import FirebaseStorage
+import FirebaseFirestore
+import FirebaseAuth
 
 struct ProfileView: View {
+    
+    let db = Firestore.firestore()
     @State private var firstName = ""
     @State private var lastName = ""
     @State private var dob = Date()
@@ -20,7 +24,33 @@ struct ProfileView: View {
     @State private var isShowingImagePicker = false
     
     @State private var imageURL: String = ""
-    
+    func getDataFromFirebase() {
+        if let userId = Auth.auth().currentUser?.uid {
+            db.collection("users").document(userId)
+                .getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        let userData = document.data()
+                        // Assign values to state variables
+                                          firstName = userData?["firstName"] as? String ?? ""
+                                          lastName = userData?["lastName"] as? String ?? ""
+                                          email = userData?["email"] as? String ?? ""
+                                          phoneNumber = userData?["phoneNumber"] as? String ?? ""
+                                          selectedGender = userData?["gender"] as? String ?? ""
+                                          
+                                          if let dobString = userData?["dob"] as? String {
+                                              let dateFormatter = DateFormatter()
+                                              dateFormatter.dateFormat = "yyyy-MM-dd"
+                                              dob = dateFormatter.date(from: dobString) ?? Date()
+                                          }
+                                          
+                                          imageURL = userData?["profileImageUrl"] as? String ?? ""
+                        print(userData)
+                    } else {
+                        print("Document does not exist")
+                    }
+            }
+        }
+    }
     var body: some View {
         VStack(spacing: 20) {
             Text("PROFILE")
@@ -39,6 +69,17 @@ struct ProfileView: View {
                     .mask(Circle())
                     .onTapGesture {
                         // Show image picker
+                        isShowingImagePicker = true
+                    }
+            } else if let url = URL(string: imageURL), let imageData = try? Data(contentsOf: url), let image = UIImage(data: imageData) {
+                Image(uiImage: image)
+                    .resizable()
+                    .frame(width: 60, height: 60)
+                    .foregroundColor(.white)
+                    .padding(20)
+                    .background(Color.black)
+                    .mask(Circle())
+                    .onTapGesture {
                         isShowingImagePicker = true
                     }
             } else {
@@ -90,6 +131,8 @@ struct ProfileView: View {
         .padding()
         .sheet(isPresented: $isShowingImagePicker, onDismiss: nil) {
             ImagePicker(profileView: self, selectedImage: $profileImage)
+        }.onAppear {
+            getDataFromFirebase()
         }
     }
     
