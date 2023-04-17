@@ -50,6 +50,7 @@ struct SearchTutor: View {
     }
     
     func getDataFromFirebase() {
+        self.items = []
         db.collection("tutors")
             //.whereField("skills", arrayContains: "")
             .limit(to: 25)
