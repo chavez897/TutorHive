@@ -9,6 +9,7 @@ import SwiftUI
 struct ContactView: View {
     let skills = ["Swift", "Python", "Java", "JavaScript"]
     let languages = ["English", "Spanish", "French", "German"]
+    
 
     @State var title: String = ""
     @State var selectedSkill: String = ""

@@ -34,8 +34,9 @@ struct Tabs: View {
                            Text("Statistics")
                        }
             
-        }
+        }.navigationBarBackButtonHidden(true)
     }
+    
 }
 struct Tabs_Previews: PreviewProvider {
     static var previews: some View {

@@ -36,7 +36,9 @@ struct SearchTutor: View {
                 Divider().padding(.top, 15)
             }
             List(items) { item in
-                TutorItem(tutor: item)
+                NavigationLink(destination: TutorDetail(tutor: item)){
+                    TutorItem(tutor: item)
+                }
             }
             .onAppear {
                 UITableView.appearance().tableFooterView = .none

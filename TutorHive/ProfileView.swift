@@ -51,13 +51,35 @@ struct ProfileView: View {
             }
         }
     }
+    private func signOut() {
+      Task {
+        authModel.signOut()
+          print(authModel.goToHome)
+            NavigationLink(
+                               destination: LoginScreen(),
+                               isActive: $authModel.goToHome, // Use the published property
+                               label: { EmptyView() }
+                           )
+        
+      }
+    }
     var body: some View {
         VStack(spacing: 20) {
-            Text("PROFILE")
-                .font(.title)
-                .fontWeight(.bold)
-                .frame(maxWidth: .infinity, alignment: .top)
-                .padding(50)
+            
+            Group{
+                HStack{
+                    Spacer()
+                    Button("Sign Out"){
+                        signOut()
+                    }.padding(.top, 50)
+                }
+                Text("PROFILE")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .frame(maxWidth: .infinity, alignment: .top)
+                    .padding(.bottom, 50)
+                
+            }
             
             if let image = profileImage {
                 Image(uiImage: image)

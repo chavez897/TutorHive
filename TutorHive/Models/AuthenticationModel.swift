@@ -17,6 +17,7 @@ final class AuthenticationModel: ObservableObject {
     @Published var signUpSuccessful: Bool = false
     @Published var isSignedIn = false
     @Published var isResetPassword = false
+    @Published var goToHome = false
   var user: User? {
     didSet {
       objectWillChange.send()
@@ -72,7 +73,11 @@ final class AuthenticationModel: ObservableObject {
   }
 
   func signOut() {
+      print(Auth.auth().currentUser)
     try? Auth.auth().signOut()
+      print(Auth.auth().currentUser)
+      self.isSignedIn = false
+      self.goToHome = true
   }
     
     func resetPassword( emailAddress: String) {
