@@ -55,11 +55,7 @@ struct ProfileView: View {
       Task {
         authModel.signOut()
           print(authModel.goToHome)
-            NavigationLink(
-                               destination: LoginScreen(),
-                               isActive: $authModel.goToHome, // Use the published property
-                               label: { EmptyView() }
-                           )
+           
         
       }
     }
@@ -73,6 +69,11 @@ struct ProfileView: View {
                         signOut()
                     }.padding(.top, 50)
                 }
+                NavigationLink(
+                                   destination: LoginScreen(),
+                                   isActive: $authModel.goToHome, // Use the published property
+                                   label: { EmptyView() }
+                               )
                 Text("PROFILE")
                     .font(.title)
                     .fontWeight(.bold)

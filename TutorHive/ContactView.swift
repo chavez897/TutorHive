@@ -14,7 +14,8 @@ struct ContactView: View {
     var tutor: String = ""
     var tutorSkills: [String] = []
       var tutorLanguage: [String] = []
-
+    @State private var showAlert = false
+    @State private var showDetail = false
     @State var title: String = ""
     @State var selectedSkill: String = ""
     @State var selectedLanguage: String = ""
@@ -76,8 +77,8 @@ struct ContactView: View {
                               if let error = error {
                                   print("Error adding document: \(error)")
                               } else {
-                                  print("Document added with ID")
-                                  // Handle success here
+                                  showAlert = true
+                                  showDetail = true
                               }
                           }
             }
@@ -88,6 +89,10 @@ struct ContactView: View {
             .frame(maxWidth: .infinity)
             .padding(.bottom, 30)
         }
+      NavigationLink(destination: SearchTutor(), isActive: $showDetail) {
+                        EmptyView()
+                    }
+                
     }
 }
 
