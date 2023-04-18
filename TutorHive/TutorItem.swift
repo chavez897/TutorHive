@@ -37,7 +37,7 @@ struct TutorItem: View {
 
 struct TutorItem_Previews: PreviewProvider {
     static var previews: some View {
-        TutorItem(tutor: Tutor(id: "", name: "Rodrigo", lastName: "Chavez Mercado", skills: ["ReactJS"], language: ["Spanish"], description: "", price: 25.0))
+        TutorItem(tutor: Tutor(id: "", name: "Rodrigo", lastName: "Chavez Mercado", skills: ["ReactJS"], language: ["Spanish"], description: "", price: 25.0, image: ":"))
     }
 }
 

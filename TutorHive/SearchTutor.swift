@@ -68,7 +68,8 @@ struct SearchTutor: View {
                                             skills: tutorData["skills"] as! [String],
                                             language: tutorData["languages"] as! [String],
                                             description: tutorData["description"] as! String,
-                                            price: tutorData["price"] as! Float
+                                            price: tutorData["price"] as! Float,
+                                            image: tutorData["image"] as! String
                                            ))
                 }
             }
@@ -92,7 +93,8 @@ struct SearchTutor: View {
                                             skills: tutorData["skills"] as! [String],
                                             language: tutorData["languages"] as! [String],
                                             description: tutorData["description"] as! String,
-                                            price: tutorData["price"] as! Float
+                                            price: tutorData["price"] as! Float,
+                                            image: tutorData["image"] as! String
                                            ))
                 }
             }
