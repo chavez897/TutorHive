@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+import FirebaseStorage
+import FirebaseFirestore
+import FirebaseAuth
 
 struct RegisterTutor: View {
     
@@ -18,12 +21,11 @@ struct RegisterTutor: View {
     @State var hcost: String=""
     @State var selectedcurrency: String = ""
     @State var description: String = ""
+    let db = Firestore.firestore()
    
-    let currency = ["USD", "CAD", "EUR", "Pound Sterling","INR"]
-    
+    let currency = ["USD", "CAD", "EUR"]
      
     var body: some View {
-        
         VStack(alignment:.center,spacing:30) {
             HStack {
                 Spacer()
@@ -141,9 +143,6 @@ struct RegisterTutor: View {
                 .cornerRadius(50)
             }
         }
-        
-        
-        
     }
 }
 
