@@ -48,7 +48,7 @@ struct SearchTutor: View {
             .padding(.vertical, 0)
         }.onAppear {
             getDataFromFirebase()
-        }
+        }.navigationBarBackButtonHidden(true)
     }
     
     func getDataFromFirebase() {

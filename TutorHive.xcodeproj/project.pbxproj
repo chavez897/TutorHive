@@ -26,6 +26,8 @@
 		652AB9A529CBF21700F3BEE3 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652AB9A429CBF21700F3BEE3 /* TabView.swift */; };
 		652AB9A729CC04D100F3BEE3 /* RegisterTutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652AB9A629CC04D100F3BEE3 /* RegisterTutor.swift */; };
 		652AB9A929CCAF3400F3BEE3 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652AB9A829CCAF3400F3BEE3 /* Statistics.swift */; };
+		8B2946E029EF135D006CDEB0 /* FetchWelcomeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2946DF29EF135D006CDEB0 /* FetchWelcomeMessage.swift */; };
+		8B2946E229EF139F006CDEB0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2946E129EF139F006CDEB0 /* Message.swift */; };
 		8B6318A829CE7D1B004CB348 /* TutorDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6318A729CE7D1B004CB348 /* TutorDetail.swift */; };
 		8BA843B529CF75C80081D180 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8BA843B429CF75C80081D180 /* FirebaseAnalytics */; };
 		8BA843B729CF75C80081D180 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 8BA843B629CF75C80081D180 /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -76,6 +78,8 @@
 		652AB9A429CBF21700F3BEE3 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		652AB9A629CC04D100F3BEE3 /* RegisterTutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTutor.swift; sourceTree = "<group>"; };
 		652AB9A829CCAF3400F3BEE3 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
+		8B2946DF29EF135D006CDEB0 /* FetchWelcomeMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchWelcomeMessage.swift; sourceTree = "<group>"; };
+		8B2946E129EF139F006CDEB0 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		8B6318A729CE7D1B004CB348 /* TutorDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,6 +168,8 @@
 				652AB9A829CCAF3400F3BEE3 /* Statistics.swift */,
 				8B6318A729CE7D1B004CB348 /* TutorDetail.swift */,
 				3B82EF8C29E83D7C0026715B /* Info.plist */,
+				8B2946DF29EF135D006CDEB0 /* FetchWelcomeMessage.swift */,
+				8B2946E129EF139F006CDEB0 /* Message.swift */,
 			);
 			path = TutorHive;
 			sourceTree = "<group>";
@@ -294,6 +300,7 @@
 				652AB9A529CBF21700F3BEE3 /* TabView.swift in Sources */,
 				652AB9A729CC04D100F3BEE3 /* RegisterTutor.swift in Sources */,
 				652AB9A329CBF1DF00F3BEE3 /* RegisterScreen.swift in Sources */,
+				8B2946E229EF139F006CDEB0 /* Message.swift in Sources */,
 				652AB9A129CBF18A00F3BEE3 /* TutorModel.swift in Sources */,
 				652AB99F29CBF15300F3BEE3 /* SearchTutor.swift in Sources */,
 				652AB9A929CCAF3400F3BEE3 /* Statistics.swift in Sources */,
@@ -306,6 +313,7 @@
 				652AB99529CBEFBE00F3BEE3 /* LoginScreen.swift in Sources */,
 				652AB99D29CBF10700F3BEE3 /* TutorItem.swift in Sources */,
 				652AB99B29CBF0D200F3BEE3 /* ForgotPassword.swift in Sources */,
+				8B2946E029EF135D006CDEB0 /* FetchWelcomeMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

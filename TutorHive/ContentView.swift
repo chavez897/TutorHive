@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var isRegisterScreenPresented = false
+    @State private var message = "testing"
     
     var body: some View {
         NavigationView {
@@ -29,9 +30,16 @@ struct ContentView: View {
                     .font(.system(size: 34))
                     .foregroundColor(Color(red: 62/255, green: 78/255, blue: 51/255))
                     .padding(.bottom, 15)
-                Text("Elevate your education with top-tier tutors!")
+                Text(self.message)
                     .font(.system(size: 19))
                     .foregroundColor(Color(red: 0/255, green: 78/255, blue: 170/255))
+                    .onAppear{
+                        apiCall().getMessage(completion: {
+                            (message) in
+                            print(message)
+                            self.message = message.message
+                        })
+                    }
                 Spacer()
             }
             .padding(.top, 170.0)
