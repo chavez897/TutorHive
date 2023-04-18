@@ -18,9 +18,8 @@ struct Tabs: View {
                 Text("Search")
             }
             
-            NavigationView {
-                ProfileView()
-            }
+            
+            ProfileView()
             .tabItem {
                 Image(systemName: "person.crop.circle")
                 Text("Proile")

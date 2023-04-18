@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var isRegisterScreenPresented = false
-    @State private var message = "testing"
+    @State private var message = ""
     
     var body: some View {
         NavigationView {
@@ -43,7 +43,7 @@ struct ContentView: View {
                 Spacer()
             }
             .padding(.top, 170.0)
-        }
+        }.navigationBarBackButtonHidden(true)
     }
 }
 

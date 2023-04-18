@@ -70,7 +70,7 @@ struct ProfileView: View {
                     }.padding(.top, 50)
                 }
                 NavigationLink(
-                                   destination: LoginScreen(),
+                                   destination: ContentView(),
                                    isActive: $authModel.goToHome, // Use the published property
                                    label: { EmptyView() }
                                )
