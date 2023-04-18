@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
+import Firebase
+
 struct ContactView: View {
-    let skills = ["Swift", "Python", "Java", "JavaScript"]
-    let languages = ["English", "Spanish", "French", "German"]
-    
+    let db = Firestore.firestore()
+    var tutor: String = ""
+    var tutorSkills: [String] = []
+      var tutorLanguage: [String] = []
 
     @State var title: String = ""
     @State var selectedSkill: String = ""
@@ -35,13 +39,13 @@ struct ContactView: View {
 
                 DropdownTextField(
                     placeholder: "Skills",
-                    options: skills,
+                    options: tutorSkills,
                     selection: $selectedSkill
                 )
 
                 DropdownTextField(
                     placeholder: "Languages",
-                    options: languages,
+                    options: tutorLanguage,
                     selection: $selectedLanguage
                 )
 
@@ -63,7 +67,19 @@ struct ContactView: View {
             .textFieldStyle(RoundedBorderTextFieldStyle())
 
             Button("Submit") {
-                // Handle submission here
+                let db = Firestore.firestore()
+                          let contactRef = db.collection("contacts")
+                          let contact = [
+                            "tutor": tutor,
+                            "title": title,                    "skill": selectedSkill,                    "language": selectedLanguage,                    "description": description                ]
+                          contactRef.addDocument(data: contact) { error in
+                              if let error = error {
+                                  print("Error adding document: \(error)")
+                              } else {
+                                  print("Document added with ID")
+                                  // Handle success here
+                              }
+                          }
             }
             .padding()
             .foregroundColor(.white)
@@ -77,7 +93,7 @@ struct ContactView: View {
 
 struct ContactView_Previews: PreviewProvider {
     static var previews: some View {
-        ContactView()
+        ContactView(tutorSkills: ["Cooking", "Play"], tutorLanguage: ["Spanish"])
     }
 }
 

@@ -9,6 +9,10 @@ import SwiftUI
 
 struct TutorDetail: View {
     @State var tutor: Tutor
+    init(tutor: Tutor) {
+        self.tutor = tutor
+        print(self.tutor)
+    }
     var body: some View {
         VStack{
             Spacer()
@@ -34,7 +38,7 @@ struct TutorDetail: View {
                 .padding(.top, 5)
                 .multilineTextAlignment(.center)
             Text(String(format: "CAD $ %.2f/hr", tutor.price)).padding(.top, 25)
-            NavigationLink(destination: ContactView()){
+            NavigationLink(destination: ContactView(tutor:tutor.id, tutorSkills: tutor.skills, tutorLanguage: tutor.language)){
                 Text("Contact")
                     .foregroundColor(.white)
                     .frame(width: 280, height: 40)
