@@ -13,13 +13,24 @@ struct TutorDetail: View {
         VStack{
             Spacer()
             Text(tutor.name + " " + tutor.lastName)
-            Image(systemName: "person")
-              .resizable()
-              .frame(width: 60, height: 60)
-              .foregroundColor(.white)
-              .padding(20)
-              .background(Color.black)
-              .clipShape(Circle())
+            if let url = URL(string: tutor.image), let imageData = try? Data(contentsOf: url), let image = UIImage(data: imageData) {
+                Image(uiImage: image)
+                    .resizable()
+                    .frame(width: 60, height: 60)
+                    .foregroundColor(.white)
+                    .padding(20)
+                    .background(Color.black)
+                    .mask(Circle())
+                    
+            } else {
+                Image(systemName: "person")
+                  .resizable()
+                  .frame(width: 60, height: 60)
+                  .foregroundColor(.white)
+                  .padding(20)
+                  .background(Color.black)
+                  .clipShape(Circle())
+            }
             Text(tutor.name + " " + tutor.lastName).font(.title).padding(.top, 30)
             HStack{
                 Image(systemName: "book.closed")
@@ -55,6 +66,6 @@ struct TutorDetail: View {
 
 struct TutorDetail_Previews: PreviewProvider {
     static var previews: some View {
-        TutorDetail(tutor: Tutor(id: "Asdfa", name: "Rodrigo", lastName: "Chavez", skills: ["Cooking", "Play"], language: ["Spanish"], description: "My descr", price: 5.0))
+        TutorDetail(tutor: Tutor(id: "Asdfa", name: "Rodrigo", lastName: "Chavez", skills: ["Cooking", "Play"], language: ["Spanish"], description: "My descr", price: 5.0, image: "asdfasd"))
     }
 }

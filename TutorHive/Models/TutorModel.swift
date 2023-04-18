@@ -15,6 +15,7 @@ struct Tutor: Identifiable {
     var language: [String]
     var description: String
     var price: Float
+    var image: String
 }
 
 
