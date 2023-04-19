@@ -12,15 +12,15 @@ import FirebaseAuth
 
 struct Tabs: View {
     let db = Firestore.firestore()
-    @State var isTutor: Bool = false
+    @EnvironmentObject var authModel: AuthenticationModel
     func getDataFromFirebase() {
         if let userId = Auth.auth().currentUser?.uid {
-            db.collection("tutors").document(userId)
-                .getDocument { (document, error) in
-                    if let document = document, document.exists {
-                        self.isTutor = true
+            db.collection("tutors").whereField("user", isEqualTo: userId)
+                .getDocuments { (querySnapshot, err) in
+                    if querySnapshot?.documents.isEmpty == false {
+                        self.authModel.setIsTutor(value: true)
                     } else {
-                        self.isTutor = false
+                        self.authModel.setIsTutor(value: false)
                     }
             }
         }
@@ -42,7 +42,7 @@ struct Tabs: View {
                 Text("Proile")
             }
             
-            if(self.isTutor) {
+            if(self.authModel.isTutor) {
                     Statistics()
                         .tabItem {
                             Image(systemName: "chart.bar")
@@ -57,6 +57,9 @@ struct Tabs: View {
             }
             
         }.navigationBarBackButtonHidden(true)
+            .onAppear() {
+                getDataFromFirebase()
+            }
         
     }
     

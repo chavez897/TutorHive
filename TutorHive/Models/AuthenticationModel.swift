@@ -18,6 +18,7 @@ final class AuthenticationModel: ObservableObject {
     @Published var isSignedIn = false
     @Published var isResetPassword = false
     @Published var goToHome = false
+    @Published var isTutor = false
   var user: User? {
     didSet {
       objectWillChange.send()
@@ -32,6 +33,10 @@ final class AuthenticationModel: ObservableObject {
       self.user = user
     }
   }
+
+    func setIsTutor(value: Bool) {
+        self.isTutor = value
+    }
 
   func signUp(
     name: String,

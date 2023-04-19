@@ -22,10 +22,12 @@ struct RegisterTutor: View {
     @State var selectedcurrency: String = ""
     @State var description: String = ""
     let db = Firestore.firestore()
+    @EnvironmentObject var authModel: AuthenticationModel
    
     let currency = ["USD", "CAD", "EUR"]
      
     var body: some View {
+        ScrollView {
         VStack(alignment:.center,spacing:30) {
             HStack {
                 Spacer()
@@ -41,14 +43,21 @@ struct RegisterTutor: View {
                 
             }
             Divider()
-            Spacer()
-            
             HStack{
                 VStack{
                     Text("Register As Tutor")
                         .font(.system(size: 28))
                         .foregroundColor(Color(red: 62/255, green: 78/255, blue: 51/255))
                         .offset(y:-30)
+                        .padding(.top, 50)
+                    Image(systemName: "person")
+                        .resizable()
+                        .frame(width: 60, height: 60)
+                        .foregroundColor(.white)
+                        .padding(20)
+                        .background(Color.black)
+                        .clipShape(Circle())
+                    
                     HStack{
                         
                         TextField("Firstname", text: $fname)
@@ -61,9 +70,9 @@ struct RegisterTutor: View {
                             .frame(width: 140)
                             .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
                             .background(Color(red: 227/255, green: 229/255, blue: 232/255))
-                        .cornerRadius(10)
+                            .cornerRadius(10)
                         
-                    }
+                    }.padding(.top, 20)
                 }
             }
             
@@ -73,13 +82,13 @@ struct RegisterTutor: View {
                     .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
                     .background(Color(red: 227/255, green: 229/255, blue: 232/255))
                     .cornerRadius(10)
-                    
+                
                 TextField("Phone no.", text: $phone)
                     .frame(width: 140)
                     .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
                     .background(Color(red: 227/255, green: 229/255, blue: 232/255))
                     .cornerRadius(10)
-                    
+                
             }
             HStack{
                 TextField("Skills", text: $skills)
@@ -113,18 +122,18 @@ struct RegisterTutor: View {
             }
             HStack{
                 TextEditor(text: $description)
-                    .frame(maxHeight: 100)
+                    .frame(height: 100)
                     .border(Color.gray, width: 0.5)
                     .overlay(
-                            Group {
-                                if description.isEmpty {
-                                    Text("Tell us something about yourself")
-                                        .foregroundColor(Color.gray)
-                                        .padding(.horizontal, 4)
-                                        .padding(.vertical, 8)
-                                    
-                                }
-                            }, alignment: .topLeading
+                        Group {
+                            if description.isEmpty {
+                                Text("Tell us something about yourself")
+                                    .foregroundColor(Color.gray)
+                                    .padding(.horizontal, 4)
+                                    .padding(.vertical, 8)
+                                
+                            }
+                        }
                     )
             }
             .padding(.horizontal)
@@ -135,7 +144,26 @@ struct RegisterTutor: View {
             .textFieldStyle(RoundedBorderTextFieldStyle())
             HStack{
                 Button("Submit") {
-                    // Handle submission here
+                    let db = Firestore.firestore()
+                    let contactRef = db.collection("tutors")
+                    let tutor = [
+                        "user": Auth.auth().currentUser!.uid,
+                        "name": fname,
+                        "lastName": lname,
+                        "email": email,
+                        "languages": language.split(separator: ","),
+                        "skills": skills.split(separator: ","),
+                        "price": Float(hcost) ?? 15,
+                        "description": description,
+                        "image": ""
+                    ] as [String : Any]
+                              contactRef.addDocument(data: tutor) { error in
+                                  if let error = error {
+                                      print("Error adding document: \(error)")
+                                  } else {
+                                      authModel.setIsTutor(value: true)
+                                  }
+                              }
                 }
                 .padding(EdgeInsets(top: 15, leading: 35, bottom: 15, trailing: 35))
                 .foregroundColor(.white)
@@ -144,6 +172,8 @@ struct RegisterTutor: View {
             }
         }
     }
+        }
+    
 }
 
 struct RegisterTutor_Previews: PreviewProvider {
