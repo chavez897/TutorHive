@@ -70,6 +70,6 @@ struct TutorDetail: View {
 
 struct TutorDetail_Previews: PreviewProvider {
     static var previews: some View {
-        TutorDetail(tutor: Tutor(id: "Asdfa", name: "Rodrigo", lastName: "Chavez", skills: ["Cooking", "Play"], language: ["Spanish"], description: "My descr", price: 5.0, image: "asdfasd"))
+        TutorDetail(tutor: Tutor(id: "Asdfa", name: "Rodrigo", lastName: "Chavez", skills: ["Cooking", "Play"], language: ["Spanish"], description: "My descr", price: 5, image: "asdfasd"))
     }
 }

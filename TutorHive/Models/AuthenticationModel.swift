@@ -154,6 +154,8 @@ final class AuthenticationModel: ObservableObject {
     enum AuthenticationError: Error {
       case tokenError(message: String)
     }
+    
+    
     func signInWithGoogle() async -> Bool {
         guard let clientID = FirebaseApp.app()?.options.clientID else {
             fatalError("No client ID found in Firebase configuration")

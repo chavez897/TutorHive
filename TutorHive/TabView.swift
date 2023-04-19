@@ -22,15 +22,15 @@ struct Tabs: View {
             ProfileView()
             .tabItem {
                 Image(systemName: "person.crop.circle")
-                Text("Proile")
+                Text("Profile")
             }
             
             NavigationView {
-                Statistics()
+                RegisterTutor()
                       }
                        .tabItem {
-                           Image(systemName: "chart.bar")
-                           Text("Statistics")
+                           Image(systemName: "person")
+                           Text("Register as User")
                        }
             
         }.navigationBarBackButtonHidden(true)

@@ -21,9 +21,12 @@ struct ProfileView: View {
     @State private var profileImage: UIImage?
     @EnvironmentObject var authModel: AuthenticationModel
     let gender = ["male", "female"]
+    
+    
     @State private var isShowingImagePicker = false
     
     @State private var imageURL: String = ""
+    
     func getDataFromFirebase() {
         if let userId = Auth.auth().currentUser?.uid {
             db.collection("users").document(userId)
