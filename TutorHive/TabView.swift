@@ -11,6 +11,8 @@ import FirebaseFirestore
 import FirebaseAuth
 
 struct Tabs: View {
+    @State private var firstName = ""
+    @State private var tutorId = ""
     let db = Firestore.firestore()
     @EnvironmentObject var authModel: AuthenticationModel
     func getDataFromFirebase() {
@@ -18,6 +20,11 @@ struct Tabs: View {
             db.collection("tutors").whereField("user", isEqualTo: userId)
                 .getDocuments { (querySnapshot, err) in
                     if querySnapshot?.documents.isEmpty == false {
+                        if let document = querySnapshot?.documents.first {
+                                            let tutorData = document.data()
+                            tutorId = document.documentID
+                            firstName = tutorData["name"] as! String
+                                        }
                         self.authModel.setIsTutor(value: true)
                     } else {
                         self.authModel.setIsTutor(value: false)
@@ -43,7 +50,7 @@ struct Tabs: View {
             }
             
             if(self.authModel.isTutor) {
-                    Statistics()
+                Statistics(name: firstName, id: tutorId)
                         .tabItem {
                             Image(systemName: "chart.bar")
                             Text("Statistics")

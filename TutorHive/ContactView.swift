@@ -70,9 +70,12 @@ struct ContactView: View {
             Button("Submit") {
                 let db = Firestore.firestore()
                           let contactRef = db.collection("contacts")
-                          let contact = [
+                let contact: [String: Any] = [
                             "tutor": tutor,
-                            "title": title,                    "skill": selectedSkill,                    "language": selectedLanguage,                    "description": description                ]
+                            "title": title,                    "skill": selectedSkill,                    "language": selectedLanguage,                    "description": description,
+                            "createdAt": Date()
+                            
+                          ]
                           contactRef.addDocument(data: contact) { error in
                               if let error = error {
                                   print("Error adding document: \(error)")
